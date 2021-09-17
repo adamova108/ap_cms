@@ -34,8 +34,8 @@ class Product
 
 class Shipping
 {
-    private $totalShipping;
-    private $products;
+    private $totalShipping = 0;
+    private $products = [];
     private $pricePerKilogram;
     private $shippingProvider;
 
@@ -77,11 +77,11 @@ class Shipping
 
 
 $product = new Product(5, 1);
-$product3->setFreeShipping();
+//$product->setFreeShipping();
 
 $pricePerKilogram = 5;
 
-$shipping = new Shipping($pricePerKilogram);
+$shipping = new Shipping($pricePerKilogram, 'GLS');
 
 $shipping->addProducts($product);
 $shipping->calculateTotalShipping();

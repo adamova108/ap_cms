@@ -1,13 +1,15 @@
 <?php
 
-include 'view/contact-us.html';
+class ContactController extends Controller
+{
 
-/*class ContactController extends Controller {
-
-    function defaultAction(){
+    function defaultAction()
+    {
         include 'view/contact-us.html';
     }
-    function submitContactFormAction() {
+
+    function submitContactFormAction()
+    {
         // validate
         // store data
         // send email
@@ -15,4 +17,4 @@ include 'view/contact-us.html';
         include 'view/contact-us-thank-you.html';
     }
 
-}*/
+}

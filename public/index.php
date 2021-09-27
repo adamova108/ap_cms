@@ -2,7 +2,7 @@
 session_start();
 
 define('ROOT_PATH', dirname(__FILE__) . DIRECTORY_SEPARATOR);
-define('VIEW_PATH', ROOT_PATH . DIRECTORY_SEPARATOR . 'view' . DIRECTORY_SEPARATOR);
+const VIEW_PATH = ROOT_PATH . DIRECTORY_SEPARATOR . 'view' . DIRECTORY_SEPARATOR;
 
 
 require_once ROOT_PATH . 'src/controller.php';

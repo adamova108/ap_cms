@@ -1,6 +1,12 @@
 <?php
 session_start();
-require_once 'src/controller.php';
+
+define('ROOT_PATH', dirname(__FILE__) . DIRECTORY_SEPARATOR);
+define('VIEW_PATH', ROOT_PATH . DIRECTORY_SEPARATOR . 'view' . DIRECTORY_SEPARATOR);
+
+
+require_once ROOT_PATH . 'src/controller.php';
+require_once ROOT_PATH . 'src/template.php';
 
 
 // if / else logic 
@@ -9,22 +15,24 @@ $section = $_GET['section'] ?? $_POST['section'] ?? 'home';
 $action = $_GET['action'] ?? $_POST['action'] ?? 'default';
 
 
+if ($section == 'about-us') {
 
-if ($section=='about-us') {
+	include ROOT_PATH . 'controller/aboutUsPage.php';
 
-    include 'controller/aboutUsPage.php';
+	$aboutController = new AboutUsController();
+	$aboutController->runAction($action);
 
-    $aboutController = new AboutUsController();
-    $aboutController->runAction($action);
+} else if ($section == 'contact') {
 
-} else if ($section == 'contact'){
-
-    include 'controller/contactPage.php';
-    $contactController = new ContactController();
-    $contactController->runAction($action);
+	include ROOT_PATH . 'controller/contactPage.php';
+	$contactController = new ContactController();
+	$contactController->runAction($action);
 
 } else {
-    include 'controller/homePage.php';
+	include ROOT_PATH . 'controller/homePage.php';
+	$homePageController = new HomePageController();
+	$homePageController->runAction($action);
+
 }
 
 

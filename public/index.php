@@ -21,7 +21,6 @@ DatabaseConnection::connect('localhost', 'kwd_phpstorm', 'root', '');
 $section = $_GET['section'] ?? $_POST['section'] ?? 'home';
 $action = $_GET['action'] ?? $_POST['action'] ?? 'default';
 
-
 if ($section == 'about-us') {
 
 	include ROOT_PATH . 'controller/AboutUsController.php';

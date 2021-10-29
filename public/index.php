@@ -16,7 +16,7 @@ require_once MODULE_PATH . 'page/models/Page.php';
 
 // Bootstrap
 /* Connect to a MySQL database using driver invocation */
-DatabaseConnection::connect('localhost', 'kwd_phpstorm', 'root', '');
+DatabaseConnection::connect('localhost', 'darwin_cms', 'root', '');
 
 
 // Routing

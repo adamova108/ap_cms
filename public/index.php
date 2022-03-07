@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-define('ROOT_PATH', dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR);
+define('ROOT_PATH', dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR );
 define('VIEW_PATH', ROOT_PATH . DIRECTORY_SEPARATOR . 'view' . DIRECTORY_SEPARATOR);
 define('MODULE_PATH', ROOT_PATH . DIRECTORY_SEPARATOR . 'modules' . DIRECTORY_SEPARATOR);
 
@@ -14,9 +14,11 @@ require_once ROOT_PATH . 'src/Router.php';
 require_once MODULE_PATH . 'page/models/Page.php';
 
 
+
 // Bootstrap
 /* Connect to a MySQL database using driver invocation */
 DatabaseConnection::connect('localhost', 'darwin_cms', 'root', '');
+
 
 
 // Routing
@@ -27,17 +29,17 @@ $dbc = $dbh->getConnection();
 
 $router = new Router($dbc);
 
-$router->findBy('pretty_url', $action);
+$router->findBy('pretty_url',$action);
 
 $action = $router->action != '' ? $router->action : 'default';
 $moduleName = ucfirst($router->module) . 'Controller';
 
 $controllerFile = MODULE_PATH . $router->module . '/controllers/' . $moduleName . '.php';
 
-if (file_exists($controllerFile)) {
-
-	include $controllerFile;
-	$controller = new $moduleName();
-	$controller->setEntityId($router->entity_id);
-	$controller->runAction($action);
+if(file_exists($controllerFile)) {
+    
+    include $controllerFile;
+    $controller = new $moduleName();
+    $controller->setEntityId($router->entity_id);
+    $controller->runAction($action);
 }
